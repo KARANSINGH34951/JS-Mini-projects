@@ -1,0 +1,1 @@
+Welcome to my mini JS projects repository! This collection features a variety of small yet impactful Javascript projects. I've implemented a series of mini javascript projects focusing on small yet crucial concepts.
