@@ -1,17 +1,20 @@
-let hrs=document.getElementById("hrs")
-let min=document.getElementById("min")
-let sec=document.getElementById("sec")
+let hrs = document.getElementById("hrs");
+let min = document.getElementById("min");
+let sec = document.getElementById("sec");
 
-setInterval(()=>{
-let currentime= new Date();
+function changeBackgroundColor() {
+  let doc = document.getElementById("hero");
+  let color = ["black", "blue", "brown", "green", "red", "violet", "yellow", "brown", "pink"];
+  doc.style.backgroundColor = color[Math.floor(Math.random() * color.length)];
+}
 
-// console.log(currentime.getMinutes());
-hrs.innerHTML=(currentime.getHours()<10?"0":"") + currentime.getHours() ;
-min.innerHTML=(currentime.getMinutes()<10?"0":"") + currentime.getMinutes() ;
-sec.innerHTML=(currentime.getSeconds()<10?"0":"") + currentime.getSeconds() ;
-},1000)
-
-
+setInterval(() => {
+  let currentTime = new Date();
+  hrs.innerHTML = (currentTime.getHours() < 10 ? "0" : "") + currentTime.getHours();
+  min.innerHTML = (currentTime.getMinutes() < 10 ? "0" : "") + currentTime.getMinutes();
+  sec.innerHTML = (currentTime.getSeconds() < 10 ? "0" : "") + currentTime.getSeconds();
+  changeBackgroundColor();
+}, 1000);
 
 
 
