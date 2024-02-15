@@ -37,37 +37,39 @@ function getcurrent(){
         // console.log(C);
 
         temp.innerHTML=parseInt(C)
-        wind.innerHTML=info.wind.speed
-        humidity.innerHTML=info.humidity
-        humidity.innerHTML=info.main.humidity
-        perc.innerHTML=info.main.pressure
+        wind.innerHTML=info.wind.speed + "km/h"
+        // humidity.innerHTML=info.humidity  + "km/h"
+        humidity.innerHTML=info.main.humidity  + "km/h"
+        perc.innerHTML=info.main.pressure  + "km/h"
 
     }  
 })
 }
-async function search(){
-  let cityinfo = city.value;
-  console.log(cityinfo);
-  const data1= await fetch(`https://api.openweathermap.org/data/2.5/weather?q=chennai&appid=e883c4b754eb3f40ffa1ed8b60fb1d5a`)
-  const info1= await data1.json()
+
+  
+async function search() {
+
+  // let cityvalue = city.value;
+  const data1 = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=e883c4b754eb3f40ffa1ed8b60fb1d5a`);
+  if (data1.status == 404) {
+    const info1 = await data1.json();
     console.log("search func");
-      console.log(info1);
+    console.log(info1);
 
-        cname.innerHTML=info1.name
-        let K=info1.main.temp
-        
-        let C = K - 273.15
-        console.log(C);
+    cname.innerHTML = info1.name;
+    let K = info1.main.temp;
+    let C = K - 273.15;
+    console.log(C);
 
-        temp.innerHTML=parseInt(C)
-        wind.innerHTML=info1.wind.speed
-        humidity.innerHTML=info1.humidity
-        humidity.innerHTML=info1.main.humidity
-        perc.innerHTML=info1.main.pressure
+    temp.innerHTML = parseInt(C);
+    wind.innerHTML = info1.wind.speed;
+    humidity.innerHTML = info1.humidity;
+    perc.innerHTML = info1.main.pressure;
+  }
 }
 
 getcurrent()
-search()
+
 
 
 
