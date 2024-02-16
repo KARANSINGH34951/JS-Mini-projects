@@ -5,6 +5,10 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.box{
+    display: flex;
+}
+
 body{
     /* background-color:#D14D72; */
     background-image: url(R.jpeg);

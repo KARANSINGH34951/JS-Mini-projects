@@ -1,6 +1,7 @@
 // let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=e883c4b754eb3f40ffa1ed8b60fb1d5a`
 
 // let city=`https://api.openweathermap.org/data/2.5/weather?q=erode&appid=e883c4b754eb3f40ffa1ed8b60fb1d5a`
+
 let city = document.getElementById("city")
 let temp = document.getElementById("temp")
 let wind = document.getElementById("wind")
@@ -28,7 +29,7 @@ function getcurrent(){
       // console.log(data.json());
       // console.log("");
       const info=await data.json()
-      // console.log(info);
+      console.log(info);
 
         cname.innerHTML=info.name
         let K=info.main.temp
@@ -48,10 +49,17 @@ function getcurrent(){
 
   
 async function search() {
+  
+
+  // let cityInput = document.getElementById("cityInput");
+
+  // Get the value entered by the user
+  let cityValue = city.value;
+  console.log(cityValue);
 
   // let cityvalue = city.value;
-  const data1 = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=e883c4b754eb3f40ffa1ed8b60fb1d5a`);
-  if (data1.status == 404) {
+  const data1 = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&appid=e883c4b754eb3f40ffa1ed8b60fb1d5a`);
+  if (data1.status != 404) {
     const info1 = await data1.json();
     console.log("search func");
     console.log(info1);
@@ -65,6 +73,8 @@ async function search() {
     wind.innerHTML = info1.wind.speed;
     humidity.innerHTML = info1.humidity;
     perc.innerHTML = info1.main.pressure;
+    event.preventDefault();
+    return false;
   }
 }
 
